@@ -4,29 +4,41 @@ Agregar nombres: Los usuarios escribirán el nombre de un amigo en un campo de t
 
 Validar entrada: Si el campo de texto está vacío, el programa mostrará una alerta pidiendo un nombre válido. Listo
 
-Visualizar la lista: Los nombres ingresados aparecerán en una lista debajo del campo de entrada.
+Visualizar la lista: Los nombres ingresados aparecerán en una lista debajo del campo de entrada. Listo
 
 Sorteo aleatorio: Al hacer clic en el botón "Sortear Amigo", se seleccionará aleatoriamente un nombre de la lista y se mostrará en la página.*/
 
 let amigos = [];
 
 function agregarAmigo(){
-    if (document.getElementById("amigo").value ==""){
+    let input = document.getElementById("amigo").value;
+    if (input ==""){
         alert("Por favor ingresa un nombre válido");
         return;
     } else{
         amigos.push(document.getElementById("amigo").value);
         console.log(amigos);
-        añadirLista();
+        añadirLista(input);
     }
     return;
 }
 
-function añadirLista(){
-    document.getElementById("listaAmigos").value = document.getElementById("amigo").value;
+function añadirLista(input){
+    let lista = document.getElementById("listaAmigos");
+    lista.append(input+" ");
+    return;
 }
 
 function sortearAmigo(){
-    alert("Esto está de la perra");
+    if (amigos.length < 2) {
+        alert("Por favor ingresa al menos 2 amigos para comenzar a sortear"); 
+        return;       
+    }else {
+        let sorteado = Math.floor(Math.random()*amigos.length)+1;
+        let amigo = amigos[sorteado-1];
+        console.log(amigo)
+        document.getElementById("resultado").value = amigo;
+    }
+    return;
 }
 
