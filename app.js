@@ -17,7 +17,6 @@ function agregarAmigo(){
         return;
     } else{
         amigos.push(document.getElementById("amigo").value);
-        console.log(amigos);
         añadirLista(input);
     }
     return;
@@ -34,10 +33,9 @@ function sortearAmigo(){
         alert("Por favor ingresa al menos 2 amigos para comenzar a sortear"); 
         return;       
     }else {
-        let sorteado = Math.floor(Math.random()*amigos.length)+1;
-        let amigo = amigos[sorteado-1];
-        console.log(amigo)
-        document.getElementById("resultado").value = amigo;
+        let sorteado = Math.floor(Math.random()*amigos.length);
+        let amigo = amigos[sorteado];
+        document.getElementById("resultado").innerText = amigo;
     }
     return;
 }
